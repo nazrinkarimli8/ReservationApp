@@ -1,5 +1,6 @@
 package az.edu.turing.controller.flightServlet;
 
+import az.edu.turing.exception.FlightNotFoundException;
 import az.edu.turing.model.FlightDto;
 import az.edu.turing.service.FlightService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +28,7 @@ public class FlightCreateServlet extends HttpServlet {
             flightService.saveFlight(flightDto);
             resp.setStatus(HttpServletResponse.SC_CREATED);
             resp.getWriter().write("Flight creation successfully!");
-        } catch (NullFlightException e) {
+        } catch (FlightNotFoundException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         }catch(Exception e){
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Something went wrong! Try again!");
