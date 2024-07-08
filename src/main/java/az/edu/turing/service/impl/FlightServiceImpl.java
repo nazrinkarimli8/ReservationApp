@@ -79,4 +79,16 @@ public class FlightServiceImpl implements FlightService {
             return new ArrayList<>();
         }
     }
+
+    @Override
+    public void updateFlight(Long id, FlightDto updatedFlightDto) {
+        FlightEntity updatedFlightEntity = new FlightEntity(
+                id,
+                updatedFlightDto.getOrigin(),
+                updatedFlightDto.getDestination(),
+                updatedFlightDto.getSeats(),
+                updatedFlightDto.getDepartureTime()
+        );
+        flightDao.update(id, updatedFlightEntity);
+    }
 }

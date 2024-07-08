@@ -105,4 +105,19 @@ public class FlightPostgresDao implements FlightDao {
         }
         return null;
     }
+
+    @Override
+    public void update(Long id, FlightEntity updatedFlightEntity) {
+        try (Connection conn = JdbcConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(SqlQueries.updateFlightQuery)) {
+            stmt.setLong(5, id);
+            stmt.setString(1, updatedFlightEntity.getOrigin().name());
+            stmt.setString(2, updatedFlightEntity.getDestination().name());
+            stmt.setTimestamp(3, Timestamp.valueOf(updatedFlightEntity.getDepartureTime()));
+            stmt.setInt(4, updatedFlightEntity.getSeats());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

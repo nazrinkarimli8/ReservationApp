@@ -3,7 +3,6 @@ package az.edu.turing.dao;
 import az.edu.turing.entity.FlightEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface FlightDao {
     void save(FlightEntity entity);
@@ -15,4 +14,6 @@ public interface FlightDao {
     List<FlightEntity> findByOrigin(String origin);
 
     FlightEntity findById(long id);
+
+    void update(Long id, FlightEntity updatedFlightEntity);
 }

@@ -17,4 +17,6 @@ public interface FlightService {
     FlightDto getFlightById(long id);
 
     List<FlightDto> getNext24HoursFlights(Cities origin);
+
+    void updateFlight(long id, FlightDto updatedFlightDto);
 }

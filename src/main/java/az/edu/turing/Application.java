@@ -4,10 +4,7 @@ import az.edu.turing.controller.bookingServlet.BookingAllServlet;
 import az.edu.turing.controller.bookingServlet.BookingByIdServlet;
 import az.edu.turing.controller.bookingServlet.BookingCancelServlet;
 import az.edu.turing.controller.bookingServlet.BookingCreateServlet;
-import az.edu.turing.controller.flightServlet.FlightByIdServlet;
-import az.edu.turing.controller.flightServlet.FlightCancelServlet;
-import az.edu.turing.controller.flightServlet.FlightCreateServlet;
-import az.edu.turing.controller.flightServlet.FlightsAllServlet;
+import az.edu.turing.controller.flightServlet.*;
 import az.edu.turing.dao.BookingDao;
 import az.edu.turing.dao.FlightDao;
 import az.edu.turing.dao.impl.BookingPostgresDao;
@@ -44,6 +41,7 @@ public class Application {
         handler.addServlet(new ServletHolder(new FlightCancelServlet(objectMapper, flightService)), "/flight/cancel");
         handler.addServlet(new ServletHolder(new FlightsAllServlet(objectMapper, flightService)), "/flight/all");
         handler.addServlet(new ServletHolder(new FlightByIdServlet(objectMapper, flightService)), "/flight/by-id");
+        handler.addServlet(new ServletHolder(new FlightUpdateServlet(objectMapper, flightService)), "/flight/update");
 
         server.start();
         server.join();
