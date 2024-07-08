@@ -50,7 +50,7 @@ public class FlightPostgresDao implements FlightDao {
                         resultSet.getLong("id"),
                         Cities.valueOf(resultSet.getString("origin")),
                         Cities.valueOf(resultSet.getString("destination")),
-                        resultSet.getInt("free_seats"),
+                        resultSet.getInt("seats"),
                         resultSet.getTimestamp("departure_time").toLocalDateTime()
                 );
                 flightEntities.add(flightEntity);
@@ -74,7 +74,7 @@ public class FlightPostgresDao implements FlightDao {
                         resultSet.getLong("id"),
                         Cities.valueOf(resultSet.getString("origin")),
                         Cities.valueOf(resultSet.getString("destination")),
-                        resultSet.getInt("free_seats"),
+                        resultSet.getInt("seats"),
                         resultSet.getTimestamp("departure_time").toLocalDateTime()
                 );
                 flightEntities.add(flightEntity);
@@ -97,7 +97,7 @@ public class FlightPostgresDao implements FlightDao {
                         Cities.valueOf(resultSet.getString("origin")),
                         Cities.valueOf(resultSet.getString("destination")),
                         resultSet.getInt("seats"),
-                        resultSet.getTimestamp("date_and_time").toLocalDateTime());
+                        resultSet.getTimestamp("departure_time").toLocalDateTime());
                 return flightEntity;
             }
         } catch (Exception e) {

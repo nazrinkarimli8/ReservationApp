@@ -57,7 +57,7 @@ public class BookingPostgresDao implements BookingDao {
             while (resultSet.next()) {
                 long id = resultSet.getLong("id");
                 long flightId = resultSet.getLong("flight_id");
-                String passengerName = resultSet.getString("passenger_name");
+                String passengerName = resultSet.getString("name");
                 bookingEntities.add(new BookingEntity(id, flightId, List.of(passengerName.split(","))));
             }
         } catch (SQLException e) {
