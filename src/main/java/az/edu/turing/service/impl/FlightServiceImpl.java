@@ -81,7 +81,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public void updateFlight(Long id, FlightDto updatedFlightDto) {
+    public void updateFlight(long id, FlightDto updatedFlightDto) {
         FlightEntity updatedFlightEntity = new FlightEntity(
                 id,
                 updatedFlightDto.getOrigin(),
