@@ -9,6 +9,8 @@ import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
 
+import static az.edu.turing.database.SqlQueries.updateFlightsQuery;
+
 public class BookingPostgresDao implements BookingDao {
 
     @Override
@@ -36,7 +38,7 @@ public class BookingPostgresDao implements BookingDao {
                         stmtBookingPassenger.executeUpdate();
                     }
                 }
-                PreparedStatement stmtFlight = conn.prepareStatement(SqlQueries.updateFlightsQuery);
+                PreparedStatement stmtFlight = conn.prepareStatement(updateFlightsQuery);
                 stmtFlight.setLong(1, bookingId);
                 stmtFlight.setLong(2, entity.getFlightId());
                 stmtFlight.executeUpdate();
@@ -71,10 +73,10 @@ public class BookingPostgresDao implements BookingDao {
             stmt.setLong(1, bookingId);
             stmt.executeUpdate();
 
-//            PreparedStatement stmtFlights=conn.prepareStatement(updateFlightsQuery);
-//            stmtFlights.setLong(1,bookingId);
-//            stmtFlights.setLong(2,findById(bookingId).getFlightId());
-//            stmtFlights.executeUpdate();
+            PreparedStatement stmtFlights=conn.prepareStatement(updateFlightsQuery);
+            stmtFlights.setLong(1,bookingId);
+            stmtFlights.setLong(2,findById(bookingId).getFlightId());
+            stmtFlights.executeUpdate();
 
             PreparedStatement stmtBookings = conn.prepareStatement(SqlQueries.deleteBookingQuery);
             stmtBookings.setLong(1, bookingId);
